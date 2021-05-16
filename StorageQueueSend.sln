@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageQueueSend", "StorageQueueSend\StorageQueueSend.csproj", "{3E201713-3836-45CF-AF22-C611F8C662E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StorageQueue", "StorageQueue", "{4EC182FC-CA87-4275-9070-2D995E16C091}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageQueueReceive", "StorageQueueReceive\StorageQueueReceive.csproj", "{1F1DBE29-1960-4FA4-8975-5AC647676559}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageQueueFunctionTrigger", "StorageQueueFunctionTrigger\StorageQueueFunctionTrigger.csproj", "{26480707-1E46-4EC0-ABBB-AA396267C79D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{6201D039-64BB-4D65-A56B-B78E9DDC39D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{64DD6E1B-BB6B-4C88-821F-46C04525BED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseWebAPI", "CourseWebAPI\CourseWebAPI.csproj", "{1F2DCFB7-40AC-4F3E-9C1A-EFB97EAA96A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E201713-3836-45CF-AF22-C611F8C662E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E201713-3836-45CF-AF22-C611F8C662E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E201713-3836-45CF-AF22-C611F8C662E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E201713-3836-45CF-AF22-C611F8C662E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F1DBE29-1960-4FA4-8975-5AC647676559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F1DBE29-1960-4FA4-8975-5AC647676559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F1DBE29-1960-4FA4-8975-5AC647676559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F1DBE29-1960-4FA4-8975-5AC647676559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26480707-1E46-4EC0-ABBB-AA396267C79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26480707-1E46-4EC0-ABBB-AA396267C79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26480707-1E46-4EC0-ABBB-AA396267C79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26480707-1E46-4EC0-ABBB-AA396267C79D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64DD6E1B-BB6B-4C88-821F-46C04525BED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64DD6E1B-BB6B-4C88-821F-46C04525BED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64DD6E1B-BB6B-4C88-821F-46C04525BED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64DD6E1B-BB6B-4C88-821F-46C04525BED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F2DCFB7-40AC-4F3E-9C1A-EFB97EAA96A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2DCFB7-40AC-4F3E-9C1A-EFB97EAA96A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F2DCFB7-40AC-4F3E-9C1A-EFB97EAA96A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F2DCFB7-40AC-4F3E-9C1A-EFB97EAA96A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E201713-3836-45CF-AF22-C611F8C662E1} = {4EC182FC-CA87-4275-9070-2D995E16C091}
+		{1F1DBE29-1960-4FA4-8975-5AC647676559} = {4EC182FC-CA87-4275-9070-2D995E16C091}
+		{26480707-1E46-4EC0-ABBB-AA396267C79D} = {4EC182FC-CA87-4275-9070-2D995E16C091}
+		{64DD6E1B-BB6B-4C88-821F-46C04525BED6} = {6201D039-64BB-4D65-A56B-B78E9DDC39D3}
+		{1F2DCFB7-40AC-4F3E-9C1A-EFB97EAA96A1} = {6201D039-64BB-4D65-A56B-B78E9DDC39D3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9D218C6-FD74-4EA0-A8A2-71D901EA915E}
+	EndGlobalSection
+EndGlobal
