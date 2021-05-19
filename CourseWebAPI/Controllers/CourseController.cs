@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace CourseWebAPI.Controllers
 {
@@ -14,7 +15,13 @@ namespace CourseWebAPI.Controllers
     [Route("/api/Course")]
     public class CourseController : Controller
     {
-        CourseService service = new CourseService();
+        CourseService service;
+       
+        public CourseController(CourseService _service)
+        {
+            service = _service;
+        }
+
         [HttpGet]
         public IEnumerable<Course> GetCourses()
         {

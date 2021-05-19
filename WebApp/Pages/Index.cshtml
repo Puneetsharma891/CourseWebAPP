@@ -3,8 +3,49 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<script type="application/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="application/javascript">
+        $(document).ready(function()
+        {
+        $.ajax({
+        type: "GET",
+        url: "https://democourseapi2021.azurewebsites.net/api/Course",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+          "crossDomain": true,
+        "headers": {
+              "accept": "application/json",
+              "Access-Control-Allow-Origin":"*",
+    'X-Requested-With':'XMLHttpRequest'
+          },
+        success: function(json) {
+            for (var i = 0; i < json.length; i++) {
+                tr = $('<tr/>');
+                tr.append("<td>" + json[i].courseId + "</td>");
+                tr.append("<td>" + json[i].courseName + "</td>");
+                tr.append("<td>" + json[i].duration + "</td>");
+                tr.append("<td>" + json[i].instructorName + "</td>");
+                $('table').append(tr);
+            }
+    }
+    });
+        });
+
+</script>
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <table class="table table-bordered table-condensed table-hover table-striped">
+        <thead>
+            <tr>
+                <th>courseId</th>
+                <th>courseName</th>
+                <th>duration</th>
+                <th>instructorName</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 </div>

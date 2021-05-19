@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,59 +10,74 @@ namespace CourseWebAPI.Models
 {
     public class CourseService
     {
-        private List<Course> list;
-
-        public CourseService()
+        SqlConnection sqlCon;
+        string _connectionString;
+        string tabelName;
+        public CourseService(IConfiguration _configuration)
         {
-            Course c1 = new Course
-            {
-                CourseId = "C01",
-                CourseName = "English",
-                Duration = 2.5,
-                InstructorName = "Puneet"
-            };
-            Course c2 = new Course
-            {
-                CourseId = "C02",
-                CourseName = "Math",
-                Duration = 21.5,
-                InstructorName = "Akhil"
-            };
-            Course c3 = new Course
-            {
-                CourseId = "C03",
-                CourseName = "Hindi",
-                Duration = 12.5,
-                InstructorName = "Kanu"
-            };
-            Course c4 = new Course
-            {
-                CourseId = "C04",
-                CourseName = "Science",
-                Duration = 1.5,
-                InstructorName = "Parul"
-            };
-
-            list = new List<Course>();
-            list.Add(c1);
-            list.Add(c2);
-            list.Add(c3);
-            list.Add(c4);
+            _connectionString = _configuration.GetConnectionString("SQLString");
+            tabelName = _configuration["TableName"];
         }
 
+        public void OpenConnection()
+        {
+            sqlCon = new SqlConnection(_connectionString);
+            sqlCon.Open();
+        }
         public IEnumerable<Course> GetCourses()
         {
-            return list;
+            List<Course> courseList = new List<Course>();
+            DataTable dt = new DataTable();
+            OpenConnection();
+            string query = $"select CourseId,CourseName,Duration,InstructorName from [dbo].[{tabelName}]";
+            SqlCommand cmd = new SqlCommand(query, sqlCon);
+            SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            ad.Fill(dt);
+
+            foreach(DataRow row in dt.Rows)
+            {
+                Course course = new Course
+                {
+                    CourseId = row[0].ToString(),
+                    CourseName = row[1].ToString(),
+                    Duration = int.Parse(row[2].ToString()),
+                    InstructorName = row[3].ToString(),
+                };
+                courseList.Add(course);
+            }
+            return courseList;
         }
 
         public Course GetCourse(string id)
         {
-            return list.First(z=>z.CourseId.Equals(id));
+            List<Course> courseList = new List<Course>();
+            DataTable dt = new DataTable();
+            OpenConnection();
+            SqlCommand cmd = new SqlCommand
+                ($"select CourseId,CourseName,Duration,InstructorName from [dbo].[{tabelName}] where CourseId='{id}'", sqlCon);
+            SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            ad.Fill(dt);
+
+            DataRow row = dt.Rows[0];
+            Course course = new Course
+            {
+                CourseId = row[0].ToString(),
+                CourseName = row[1].ToString(),
+                Duration = int.Parse(row[2].ToString()),
+                InstructorName = row[3].ToString(),
+            };
+            return course;
         }
 
         public void AddCourse(Course course)
         {
-            list.Add(course);
+            
+            List<Course> courseList = new List<Course>();
+            DataTable dt = new DataTable();
+            OpenConnection();
+            string query = $"INSERT INTO {tabelName} VALUES('{course.CourseId}','{course.CourseName}',{course.Duration},'{course.InstructorName}');";
+            SqlCommand cmd = new SqlCommand(query, sqlCon);
+            cmd.ExecuteNonQuery();
         }
     }
 }
