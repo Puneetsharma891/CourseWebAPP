@@ -26,26 +26,16 @@ namespace CourseWebAPI.Models
         }
         public IEnumerable<Course> GetCourses()
         {
-            List<Course> courseList = new List<Course>();
-            DataTable dt = new DataTable();
-            OpenConnection();
-            string query = $"select CourseId,CourseName,Duration,InstructorName from [dbo].[{tabelName}]";
-            SqlCommand cmd = new SqlCommand(query, sqlCon);
-            SqlDataAdapter ad = new SqlDataAdapter(cmd);
-            ad.Fill(dt);
+            List<Course> courses = new List<Course>();
 
-            foreach(DataRow row in dt.Rows)
-            {
-                Course course = new Course
-                {
-                    CourseId = row[0].ToString(),
-                    CourseName = row[1].ToString(),
-                    Duration = int.Parse(row[2].ToString()),
-                    InstructorName = row[3].ToString(),
-                };
-                courseList.Add(course);
-            }
-            return courseList;
+            courses.Add(new Course("1", "C01", "Hindi", 12, "Puneet"));
+            courses.Add(new Course("2", "C02", "English", 12, "Parul"));
+            courses.Add(new Course("3", "C03", "Hindi", 12, "Puneet"));
+            courses.Add(new Course("4", "C04", "Hindi", 12, "Puneet"));
+            courses.Add(new Course("5", "C05", "Math", 12, "Puneet"));
+            courses.Add(new Course("6", "C06", "science", 12, "Puneet"));
+
+            return courses;
         }
 
         public Course GetCourse(string id)

@@ -8,9 +8,11 @@ using Newtonsoft.Json;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CourseWebAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("/api/Course")]
     public class CourseController : Controller

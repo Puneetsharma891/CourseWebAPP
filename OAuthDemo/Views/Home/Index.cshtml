@@ -1,10 +1,35 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using Microsoft.AspNetCore.Identity
 
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@using System.Security.Claims;
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <p>Access Token @ViewBag.token</p>
     <p>Course @ViewBag.Content</p>
 </div>
+<ul class="navbar-nav">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item">
+            Hello @User.Identity.Name
+        </li>
+
+
+    }
+</ul>
+
+<table>
+    <tr><th>Type</th><th>Value</th></tr>
+    @foreach (var claim in ((ClaimsIdentity)User.Identity).Claims)
+    {
+        <tr>
+            <td>@claim.Type</td>
+            <td>@claim.Value</td>
+        </tr>
+    }
+</table>
