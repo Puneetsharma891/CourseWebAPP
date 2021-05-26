@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CourseWebAPI.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [ApiController]
     [Route("/api/Course")]
     public class CourseController : Controller
